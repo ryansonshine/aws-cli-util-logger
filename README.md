@@ -28,7 +28,7 @@ const logger = new AwsCliUtilLogger({
   packageName: 'aws-sso-creds-helper',
 });
 
-logger.logSystemInfo('default');
+logger.logSystemInfo('sso');
 /*
 [aws-sso-creds-helper]: ===========
 [aws-sso-creds-helper]: SYSTEM INFO
