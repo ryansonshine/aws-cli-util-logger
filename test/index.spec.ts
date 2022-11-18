@@ -120,6 +120,15 @@ describe('logger', () => {
 
       expect(spy).toHaveBeenCalledWith(expected);
     });
+
+    it('should log an unknown error has occured when the error is not an instance of error', () => {
+      const spy = jest.spyOn(logger, 'error');
+      const notAnError = {};
+
+      logger.handleError(notAnError);
+
+      expect(spy).toHaveBeenCalledWith('An unknown error has occured');
+    });
   });
 
   describe('logSystemInfo', () => {

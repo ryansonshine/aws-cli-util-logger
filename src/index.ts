@@ -108,11 +108,15 @@ export class AwsCliUtilLogger {
     this.disabled = false;
   }
 
-  public handleError = (e: Error, debug = false): void => {
+  public handleError = (e: Error | unknown, debug = false): void => {
     this.enable();
-    this.error(e.message);
-    if (e.stack && debug) {
-      this.log(e.stack);
+    if (e instanceof Error) {
+      this.error(e.message);
+      if (e.stack && debug) {
+        this.log(e.stack);
+      }
+    } else {
+      this.error('An unknown error has occured');
     }
     if (!debug) {
       this.info(
